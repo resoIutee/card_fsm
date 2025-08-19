@@ -1,0 +1,33 @@
+local base_state = {}
+base_state.__index = base_state
+
+function base_state.new(card)
+	local self = setmetatable({
+		card = card
+	}, base_state)
+	return self
+end
+
+function base_state:defer_state(state, data) self.card.state_machine:defer_state(state, data) end
+
+function base_state:enter() end
+
+function base_state:exit() end
+
+function base_state:input_changed(input, gp) 
+	if gp then return end
+end
+
+function base_state:input_ended(input, gp) 
+	if gp then return end
+end
+
+function base_state:input_began(input, gp)
+	if gp then return end
+end
+
+function base_state:mouse_hover_leave() end
+
+function base_state:mouse_hover_enter() end
+
+return base_state
